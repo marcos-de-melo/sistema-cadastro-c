@@ -13,9 +13,29 @@
         <label for="dataNasc">Data de Nascimento</label>
         <input type="date" name="dataNasc" id="dataNasc" required>
     </div>
+    <div>
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" required>
+    </div>
+
+    <div>
+        <label for="obs">Observações</label>
+        <textarea name="obs" id="obs" placeholder="Diga alguma coisa do contato"></textarea>
+    </div>
 
     <div>
         <input type="submit" value="Cadastrar">
     </div>
 
 </form>
+<?php
+$nome = $_POST['nome'] ?? '';
+$email = $_POST['email'] ?? '';
+$dataNasc = $_POST['dataNasc'] ?? '';
+$senha = $_POST['senha'] ?? '';
+echo "Nome: $nome <br>";
+echo "E-Mail: $email <br>";
+echo "Data de Nascimento: $dataNasc <br>";
+echo "Senha: $senha <br>";
+
+?>
