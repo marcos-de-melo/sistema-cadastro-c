@@ -29,13 +29,28 @@
 
 </form>
 <?php
+$msq = "";
+
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';
 $dataNasc = $_POST['dataNasc'] ?? '';
 $senha = $_POST['senha'] ?? '';
-echo "Nome: $nome <br>";
-echo "E-Mail: $email <br>";
-echo "Data de Nascimento: $dataNasc <br>";
-echo "Senha: $senha <br>";
+$obs = $_POST['obs'] ?? '';
 
+
+if ($nome && $email && $dataNasc && $senha) {
+    
+    $sql = "INSERT INTO tbusuarios (nomeUsuario, emailUsuario, dataNascUsuario, senhaUsuario, obsUsuario) VALUES ('$nome', '$email', '$dataNasc', '$senha', '$obs')";
+    $resultado = mysqli_query($conn, $sql);
+    if ($resultado) {
+        $msg = "Usuário cadastrado com sucesso!";
+    } else {
+        $msg = "Erro ao cadastrar usuário: " . mysqli_error($conn);
+    }
+
+} else {
+    $msg = "Preencha todos os campos para cadastrar o usuário.";
+}
+
+echo $msg;
 ?>
